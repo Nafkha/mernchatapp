@@ -18,7 +18,7 @@ in config/default.js
 		"jwtSecret":"textChat"
 
 	}
-Change the `mongodb://localhost:27017/TextChat` wit your database link
+Change the `mongodb://localhost:27017/TextChat` with your database URL
 ### 3. Author
 ##### [Mohamed Youssef Nafkha](https://www.facebook.com/Nafkhadortmunder)
 > Fullstack developer : nafkha.m.youssef@gmail.com
