@@ -1,0 +1,28 @@
+{
+  "name": "mern-chat-app",
+  "version": "1.0.0",
+  "description": "MERN chat app",
+  "main": "index.js",
+  "scripts": {
+    "client": "npm start --prefix client",
+    "server": "npm start --prefix server",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nafkha/mernchatapp.git"
+  },
+  "keywords": [
+    "MERN",
+    "CHAT"
+  ],
+  "author": "Mohamed Youssef Nafkha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nafkha/mernchatapp/issues"
+  },
+  "homepage": "https://github.com/Nafkha/mernchatapp#readme",
+  "dependencies": {
+    "concurrently": "^5.2.0"
+  }
+}
