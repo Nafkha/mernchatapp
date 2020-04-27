@@ -1,0 +1,64 @@
+.main{
+    display: flex;
+    width: 100%;
+    height: 570px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    
+}
+h4{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5rem;
+    color: white;
+
+}
+.main .left, .main .right{
+    padding: 30px;
+    width: 50%;
+    height: 100%;
+}
+.main .left{
+    /* background-color: #023e7d; */
+    position: relative;
+    background: linear-gradient(rgba(0, 18, 51,.5),rgba(0, 18, 51,.5)),url('https://images.unsplash.com/photo-1431540015161-0bf868a2d407?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80');
+}
+.main .right{
+    background-color: #002855;
+}
+input{
+    display: block;
+    margin-top: 5px;
+}
+input[type=text],input[type=email],input[type=password]{
+    border: 1px solid rgba(255, 255, 255, 0.37);
+    border-radius: 3px;
+    height: 30px;
+    width: 250px;
+    color: white;
+    
+    font-size: 0.8rem;
+    font-weight: 30;
+    background-color: rgba(255, 255, 255, 0.466);
+    
+
+    
+}
+label{
+    font-family: 'Manrope',sans-serif;
+    font-size: 1rem;
+    color: rgb(214, 214, 214);
+    font-weight: 100;
+    margin-top: 5px;
+
+}
+.button{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.btn:hover{
+    cursor: pointer;
+}
