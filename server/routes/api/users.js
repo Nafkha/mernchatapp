@@ -23,19 +23,26 @@ router.post("/register", (req,res) => {
         return res.status(400).json(errors)
     }
 
-    User.findOne({email: req.body.email}).then(user => {
+    const email = req.body.email.toUpperCase()
+    const username = req.body.username.toUpperCase()
+
+    User.findOne({email}).then(user => {
         if(user){
-            return res.status(400).json({Error: "Email Already Registred"})
+            const errMsg = req.body.email + " Is already used"
+            console.log(errMsg)
+            return res.status(400).json({Error: errMsg})
         }else{
-            User.findOne({username: req.body.username}).then(us =>{
+            User.findOne({username}).then(us =>{
                 if(us){
-                    return res.status(400).json({Error: "Username already exists"})
+                    const errMsg = req.body.username + " Is already used"
+                    console.log(errMsg)
+                    return res.status(400).json({Error: errMsg})
                 }else{
                     const newUser  = new User({
-                        username: req.body.username,
+                        username: req.body.username.toUpperCase(),
                         firstname: req.body.firstname,
                         lastname: req.body.lastname,
-                        email: req.body.email,
+                        email: req.body.email.toUpperCase(),
                         password: req.body.password
                     })
                     bcrypt.genSalt(10, (err, salt) =>{
@@ -62,7 +69,7 @@ router.post('/login', (req,res)=>{
     if(!isValid){
         return res.status(400).json(errors)
     }
-    const username = req.body.username
+    const username = req.body.username.toUpperCase()
     const password = req.body.password
 
     User.findOne({username}).then(user=>{
@@ -70,6 +77,7 @@ router.post('/login', (req,res)=>{
             console.log("USER NOT FOUND")
             return res.status(404).json({Error: "USER NOT FOUND"})
         }
+        console.log("USER FOUND")
         bcrypt.compare(password, user.password).then(isMatch => {
             if(isMatch){
                 const payload = {
@@ -83,7 +91,13 @@ router.post('/login', (req,res)=>{
                 (err,token)=>{
                     res.json({
                         success: true,
-                        token: token
+                        token: token,
+                        user: {
+                            id: user.id,
+                            username: user.username,
+                            firstname: user.firstname,
+                            lastname: user.lastname
+                        }
                     })
                 })
             }else{
