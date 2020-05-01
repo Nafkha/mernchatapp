@@ -22,7 +22,9 @@ router.post("/register", (req,res) => {
     const {errors, isValid} = validateRegisterInput(req.body)
 
     if(!isValid){
-        return res.status(400).json(errors)
+        console.log(errors.Error)
+        errMsg = errors.Error
+        return res.status(400).json({Error: errMsg})
     }
 
     const email = req.body.email.toUpperCase()

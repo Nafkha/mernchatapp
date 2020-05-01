@@ -13,31 +13,31 @@ module.exports = function validateRegisterInput(data){
 
 
     if(validator.isEmpty(data.username)){
-        errors.username = "Username Field is required"
+        errors.Error = "Username Field is required"
     }
     if(validator.isEmpty(data.firstname)){
-        errors.firstname = "Firstname Field is required"
+        errors.Error = "Firstname Field is required"
     }
     if(validator.isEmpty(data.lastname)){
-        errors.lastname = "Lastname Field is required"
+        errors.Error = "Lastname Field is required"
     }
     if(validator.isEmpty(data.email)){
-        errors.email = "Email Field is required"
+        errors.Error = "Email Field is required"
     }else if(!validator.isEmail(data.email)){
-        errors.email = "Email is not valid"
+        errors.Error = "Email is not valid"
     }
     if(validator.isEmpty(data.password)){
-        errors.password = "Password Field is required"
+        errors.Error = "Password Field is required"
     }
     if(validator.isEmpty(data.password2)){
-        errors.password2 = "Confirm password Field is required"
+        errors.Error = "Confirm password Field is required"
     }
 
     if(!validator.isLength(data.password, {min: 6, max: 30})){
-        errors.password = "Password Length must be at least 6 characters"
+        errors.Error = "Password Length must be at least 6 characters"
     }
     if(!validator.equals(data.password,data.password2)){
-        errors.password2 = "Password don't match"
+        errors.Error = "Password don't match"
     }
 
     return{
