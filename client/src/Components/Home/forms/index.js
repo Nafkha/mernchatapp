@@ -11,6 +11,7 @@ function Forms(){
     const [action,setAction] = useState('login')
     const [username,setUsername] = useState('')
     const [password, setPassword] = useState('')
+    // eslint-disable-next-line
     const [error, setError]= useState('')
 
     const {setUserData} = useContext(UserContext);
@@ -20,12 +21,14 @@ function Forms(){
         e.preventDefault()
         const logindata = {username, password}
         Axios.post('/api/users/login', logindata).then(res => {
+            localStorage.setItem('auth-token', res.data.token)
+            localStorage.setItem('username', res.data.user.username)
+
             setUserData({
                 token: res.data.token,
                 user: res.data.user
             })
             console.log(res.data.user)
-            localStorage.setItem('auth-token', res.data.token)
             history.push("/")
 
         }).catch(err =>{

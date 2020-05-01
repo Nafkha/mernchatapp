@@ -3,6 +3,8 @@ const router = express.Router()
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const config = require('config')
+const auth = require('../../middleware/auth')
+
 
 const validateRegisterInput = require('../../validation/register')
 const validateLoginInput = require('../../validation/login')
@@ -106,6 +108,35 @@ router.post('/login', (req,res)=>{
             }
         })
     })
+})
+
+//validate toke
+
+router.post('/tokenIsValid', async(req,res) => {
+    try{
+        const token = req.header('x-auth-token')
+        if(!token) {
+            console.log("Error 1")
+            return res.json(false)}
+        const verified = jwt.verify(token,config.get('jwtSecret'))
+        if(!verified) {
+            console.log("Error 2")
+
+            return res.json(false)}
+        const user = await User.findById(verified.id)
+        if(!user) return res.json(false)
+        return res.json(true)
+    }catch(err){
+        console.log("Error ",err.message)
+        return res.json({Error: err.message})
+    }
+} )
+
+router.get('/', auth, (req,res)=>{
+    User.findById(req.user)
+    .select('-password')
+    .then(user => res.json(user))
+
 })
 
 module.exports = router

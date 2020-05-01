@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, {  useContext } from 'react'
 import './style.css'
 import Forms from './forms'
 import {UserContext} from './../../context/userContext'
@@ -11,7 +11,7 @@ function Home(){
                 <div>
                     {userData.user ? (
                     <div className="firstpage">
-                        <h1>Welcome {userData.user.username}</h1>
+                        <h1>Welcome {localStorage.getItem('username')}</h1>
                     </div>
 
                     ) : (
