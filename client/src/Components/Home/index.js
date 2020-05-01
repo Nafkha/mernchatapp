@@ -11,14 +11,14 @@ function Home(){
                 <div>
                     {userData.user ? (
                     <div className="firstpage">
-                        <h1>Welcome {localStorage.getItem('username')}</h1>
+                        <h1 className="title">Welcome {localStorage.getItem('username')}</h1>
                     </div>
 
                     ) : (
                     <div>
                         <div className="firstpage">
-                            <h1>MERN CHAT APP</h1>
-                            <a href="#login" className="btn">Se connecter</a>
+                            <h1 className="title">MERN CHAT APP</h1>
+                            <a href="#login" className="buttonP">Se connecter</a>
                         </div>
                         <div id="login" className="loginpage">
                             <Forms/>

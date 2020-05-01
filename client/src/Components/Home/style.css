@@ -34,7 +34,7 @@ a {
     color: white;
 }
 
-.btn {
+.buttonP {
     display: inline-block;
     font-family: 'Open Sans', sans-serif;
     font-size: 1.2rem;
@@ -48,8 +48,10 @@ a {
 	opacity: 0.7;
 }
 
-.btn:hover {
-	transform: scale(0.98);
+.buttonP:hover {
+    transform: scale(0.98);
+    text-decoration: none;
+    color: white;
 }
 
 .loginpage{

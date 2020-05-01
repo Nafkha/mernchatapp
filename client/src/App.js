@@ -41,13 +41,15 @@ function App() {
 
 
   return (
-    <BrowserRouter>
-    <UserContext.Provider value={{userData, setUserData}}>
-      <Switch>
-        <Route exact path="/" component={Home} />
-      </Switch>
-    </UserContext.Provider>
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        <UserContext.Provider value={{userData, setUserData}}>
+          <Switch>
+            <Route exact path="/" component={Home} />
+          </Switch>
+        </UserContext.Provider>
+      </BrowserRouter>
+    </>
 
   );
 }
