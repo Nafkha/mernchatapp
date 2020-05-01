@@ -1,2 +1,2 @@
 • Keep The user logged in when refreshed (done)
-• Register User
+• Register User (done)
