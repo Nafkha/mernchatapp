@@ -5,13 +5,21 @@ import {UserContext} from './../../context/userContext'
 
 function Home(){
 
-    const { userData } = useContext(UserContext)
+    const { userData, setUserData } = useContext(UserContext)
+    const logout = () =>{
+        setUserData({
+            token: undefined,
+            user: undefined
+        })
+        localStorage.clear()
+    }
 
         return(
                 <div>
                     {userData.user ? (
                     <div className="firstpage">
                         <h1 className="title">Welcome {localStorage.getItem('username')}</h1>
+                        <button className="buttonP" onClick={logout}>Déconnecter</button>
                     </div>
 
                     ) : (
